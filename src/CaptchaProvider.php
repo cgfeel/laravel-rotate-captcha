@@ -4,6 +4,7 @@ namespace Levi\LaravelRotateCaptcha;
 
 use Illuminate\Support\ServiceProvider;
 use Levi\LaravelRotateCaptcha\Support\File;
+use Levi\LaravelRotateCaptcha\Support\Store;
 
 class CaptchaProvider extends ServiceProvider
 {
@@ -45,6 +46,10 @@ class CaptchaProvider extends ServiceProvider
                 config('rotate.captcha.storePath'), DIRECTORY_SEPARATOR, $params['path'] ?? 'transform'
             );
             return File::make($path);
+        });
+
+        $this->app->singleton('rotate.captcha.store', function() {
+            return new Store();
         });
     }
 }

@@ -11,6 +11,7 @@ class CaptchaController extends Controller
         $middleware = (array)config('rotate.captcha.middleware', []);
         $middleware !== [] && $this->middleware($middleware);
     }
+
     /**
      * 生成验证码图片和相关信息
      */
