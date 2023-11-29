@@ -182,3 +182,24 @@ app('rotate.captcha.file')->clear()->cost();   // 清理后返回剩余总数
 
 具体请查看文档：[更新日志](https://github.com/cgfeel/laravel-rotate-captcha/blob/main/docs/changelog.md)
 
+## 物料
+
+即时设计的向量稿件，包含组件设计规范：[查看](https://js.design/community?category=detail&type=resource&id=6561674f12aadf8dee1b33c2)
+
+![911700882740_ pic](https://github.com/cgfeel/laravel-rotate-captcha/assets/578141/ea1532fa-17e1-4d08-b005-5089f705388c)
+
+## 相关产品
+
+### react前端组件
+
+整理中，待开放...
+
+### isszz/rotate-captcha
+
+[[点击打开](https://github.com/ahsankhatri/wordpress-auth-driver-laravel/tree/master)]
+
+包含：
+
+- 前端：vue、uni-app
+- 后端：php、ThinkPHP
+
