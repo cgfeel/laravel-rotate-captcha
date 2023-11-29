@@ -196,7 +196,7 @@ app('rotate.captcha.file')->clear()->cost();   // 清理后返回剩余总数
 
 ### isszz/rotate-captcha
 
-[[点击打开](https://github.com/ahsankhatri/wordpress-auth-driver-laravel/tree/master)]
+第三方仓库，提供了react和laravel之外的生态扩展 [[点击打开](https://github.com/ahsankhatri/wordpress-auth-driver-laravel/tree/master)]
 
 包含：
 
