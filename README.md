@@ -63,9 +63,9 @@ php artisan vendor:publish --provider="Levi\LaravelRotateCaptcha\CaptchaProvider
 
 ### 手动设置
 
-通过中间件自定义处理，修改配置配置`config/rotate.captcha.php`中`middleware`项
+**仅修改中间件：** 通过中间件自定义处理，修改配置配置`config/rotate.captcha.php`中`middleware`项
 
-关闭默认提供的路由和控制器
+**完全自定义：** 关闭默认提供的路由和控制器
 
 - 配置`config/rotate.captcha.php`中的`routers`项，关闭对应的路由
 - 参考文件`CaptchaController.php`和`CaptchaMiddleware.php`
