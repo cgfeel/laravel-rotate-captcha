@@ -2,9 +2,9 @@
 
 [![Latest Stable Version](http://poser.pugx.org/levi/laravel-rotate-captcha/v)](https://packagist.org/packages/levi/laravel-rotate-captcha) [![Total Downloads](http://poser.pugx.org/levi/laravel-rotate-captcha/downloads)](https://packagist.org/packages/levi/laravel-rotate-captcha) [![Latest Unstable Version](http://poser.pugx.org/levi/laravel-rotate-captcha/v/unstable)](https://packagist.org/packages/levi/laravel-rotate-captcha) [![License](http://poser.pugx.org/levi/laravel-rotate-captcha/license)](https://packagist.org/packages/levi/laravel-rotate-captcha) [![PHP Version Require](http://poser.pugx.org/levi/laravel-rotate-captcha/require/php)](https://packagist.org/packages/levi/laravel-rotate-captcha)
 
-一个开箱即用的滑动验证码Laravel扩展，基于[[isszz/rotate-captcha](https://github.com/ahsankhatri/wordpress-auth-driver-laravel/tree/master)]做的二次开发；结合了腾讯防水墙，增加安全策略（[设计思路](#设计思路)）
+一个开箱即用的滑动验证码Laravel扩展，基于[[isszz/rotate-captcha](https://github.com/ahsankhatri/wordpress-auth-driver-laravel/tree/master)]做的二次开发；结合了腾讯防水墙，增加安全策略，查看：（[策略](#策略)）和（[设计思路](#设计思路)）
 
-## 安装
+## 安装 (Installation)
 
 安装此包你需要：
 
@@ -26,7 +26,7 @@ composer require levi/laravel-rotate-captcha
 }
 ```
 
-## 设置
+## 设置 (Configuration)
 
 迁移配置文件、语言包、附件图
 
@@ -40,7 +40,7 @@ php artisan vendor:publish --provider="Levi\LaravelRotateCaptcha\CaptchaProvider
 'rotate.captcha' => \Levi\LaravelRotateCaptcha\CaptchaMiddleware::class
 ```
 
-## 使用
+## 使用 (Usage)
 
 ### 默认开箱即用
 
@@ -69,9 +69,9 @@ php artisan vendor:publish --provider="Levi\LaravelRotateCaptcha\CaptchaProvider
 
 - 配置`config/rotate.captcha.php`中的`routers`项，关闭对应的路由
 - 参考文件`CaptchaController.php`和`CaptchaMiddleware.php`
-- 参考：[设计思路](#设计思路)
+- 参考：[策略](#策略) 和 [设计思路](#设计思路)
 
-## 跨域
+## 跨域 (Cors)
 
 根据情况设置，以下仅供参考，修改`config/cors.php`：
 
@@ -94,21 +94,21 @@ php artisan vendor:publish --provider="Levi\LaravelRotateCaptcha\CaptchaProvider
     'supports_credentials' => true,
 ```
 
-## 缓存
+## 缓存 (Cache)
 
 用于存储验证信息，默认按照`Laravel`缓存配置`config/cache.php`默认引擎`file`
 
 - 建议配置`cache.php`中的默认缓存
 - 如果要和默认缓存不一样，修改`config/rotate.captcha.php`中的`cache`，采用的缓存需要提前在`cache.php`配置好
 
-## 文件驱动
+## 文件驱动 (Disk)
 
 用于存储验证图片，默认按照`Laravel`文件配置`config/filesystem.php`默认引擎`local`
 
 - 建议配置`filesystem.php`中的驱动引擎
 - 如果要和默认驱动不一样，修改`config/rotate.captcha.php`中的`disk`，采用的驱动需要提前在`filesystem.php`配置好
 
-## 多语言
+## 多语言 (Language)
 
 提供中文和英文，默认按照`Laravel`语言配置`config/app.php`配置为`en`
 
@@ -116,7 +116,25 @@ php artisan vendor:publish --provider="Levi\LaravelRotateCaptcha\CaptchaProvider
  - 如果要和默认语言不一样，修改`config/rotate.captcha.php`中的`lang`
  - 如果需要默认提供之外的语言包，在根目录下的`lang/vendor/rotate.captcha`，参考语言包添加语言
 
-## 设计思路
+## 策略 (Policie)
+
+**由两部分组成：** `policie`默认策略，`rules`策略组规则
+
+**策略规则：**
+
+- `limit`: 上限次数，达到峰值后重新验证，`0`不限制
+- `time`: 使用期限，过期后重新验证，`0`不限制
+- `routers`: 匹配要授权的路由组，`null`全匹配
+
+这里的路由是指验证通过后，要执行操作的路由，而不是验证操作时的路由
+
+**原理：**
+
+- 验证通过后将颁发：`sid`、`ticket`
+- 执行操作时验证不通过不予通过，通过就去和执行的`route`进行匹配
+- 从而避免跨权，跨范围执行
+
+## 设计思路 (Design)
 
 ![New Board](https://github.com/cgfeel/laravel-rotate-captcha/assets/578141/27e82f87-0937-4e23-9e08-395fd9f0adda)
 
