@@ -4,6 +4,14 @@
 
 一个开箱即用的滑动验证码Laravel扩展，基于[[isszz/rotate-captcha](https://github.com/ahsankhatri/wordpress-auth-driver-laravel/tree/master)]做的二次开发；结合了腾讯防水墙，增加安全策略，查看：（[策略](#策略)）和（[设计思路](#设计思路)）
 
+前端代码整理中，待更新...
+
+<img width="351" alt="image" src="https://github.com/cgfeel/laravel-rotate-captcha/assets/578141/0f6d4073-2811-4c5b-807d-a95d56973848">
+
+视频演示：
+
+https://github.com/cgfeel/laravel-rotate-captcha/assets/578141/afa169d1-05c3-43d6-b7e7-cabaa8c5dbc5
+
 ## 安装 (Installation)
 
 安装此包你需要：
