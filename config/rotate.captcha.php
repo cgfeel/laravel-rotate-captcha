@@ -150,11 +150,8 @@ return [
     | 鉴权路由
     |--------------------------------------------------------------------------
     |
-    | 提供4组路由：
-    | - rotate.captcha.get
-    | - rotate.captcha.load
-    | - rotate.captcha.verify
-    | - rotate.captcha.test
+    | 提供5组路由，见：
+    | - `levi/laravel-rotate-captcha/routes/web.php`
     | 规则：
     | - 不写部署在所有环境
     | - 指定环境只在特定环境提供路由
