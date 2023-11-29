@@ -1,0 +1,37 @@
+{
+    "name": "levi/laravel-rotate-captcha",
+    "description": "laravel rotate captcha",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laravel", "captcha"
+    ],
+    "authors": [
+        {
+            "name": "levi",
+            "email": "cgfeel@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Levi\\LaravelRotateCaptcha\\": "src/",
+            "Levi\\LaravelRotateCaptcha\\Tests\\": "test/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "laravel/framework": "^9.0|^10.0",
+        "php": ">=8.0"
+    },
+    "extra": {
+        "laravel": {
+            "aliases": {
+                "RotateCaptcha": "Levi\\LaravelRotateCaptcha\\Facade"
+            },
+            "providers": [
+                "Levi\\LaravelRotateCaptcha\\CaptchaProvider"
+            ]
+        }
+    }
+}
