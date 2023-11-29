@@ -52,7 +52,7 @@ php artisan vendor:publish --provider="Levi\LaravelRotateCaptcha\CaptchaProvider
 
 ### 默认开箱即用
 
-默认提供了5个路由、1个中间件、1个控制器
+提供了5个路由、1个中间件、1个控制器
 
 | url | router name | method | usage |
 | ----- | ----- | ----- | ----- |
@@ -71,13 +71,13 @@ php artisan vendor:publish --provider="Levi\LaravelRotateCaptcha\CaptchaProvider
 
 ### 手动设置
 
-**仅修改中间件：** 通过中间件自定义处理，修改配置配置`config/rotate.captcha.php`中`middleware`项
+**仅修改中间件：** 增加或修改中间件处理请求和响应的数据，修改配置配置`config/rotate.captcha.php`中`middleware`项
 
 **完全自定义：** 关闭默认提供的路由和控制器
 
 - 配置`config/rotate.captcha.php`中的`routers`项，关闭对应的路由
 - 参考文件`CaptchaController.php`和`CaptchaMiddleware.php`
-- 参考：[策略](#策略) 和 [设计思路](#设计思路)
+- 参考：[服务对象](#服务对象-server)、[策略](#策略-policie)、[设计思路](#设计思路-design)
 
 ## 更新验证图片 (Updating)
 
@@ -94,8 +94,8 @@ $image = file_get_contents({custome_api_url});
 app('rotate.captcha.file', ['path' => 'origin'])->prepend('costome_name.jpg', $image);
 ```
 
-> 提示：
-> 风景图安全系数 > 人物图 > 卡通图片，但不建议使用`bing`每日一图作为验证图片，因为验证的图片每天都是固定的
+> 安全系数：
+> 风景图 > 人物图 > 卡通图片，但不建议使用`bing`每日一图作为验证图片，因为验证的图片每天都是固定的，拿来比对就能得出结果
 
 ## 清理过期图片 (Cleanup)
 
@@ -103,6 +103,7 @@ app('rotate.captcha.file', ['path' => 'origin'])->prepend('costome_name.jpg', $i
 
 ```
 <?php
+
 app('rotate.captcha.file')->clear();   // 清理前一天
 app('rotate.captcha.file')->clear(3600);   // 清理1小时前
 app('rotate.captcha.file')->clear()->cost();   // 清理后返回剩余总数
@@ -145,7 +146,7 @@ app('rotate.captcha.file')->clear()->cost();   // 清理后返回剩余总数
 
  - 建议修改`app.php`中的`locale`
  - 如果要和默认语言不一样，修改`config/rotate.captcha.php`中的`lang`
- - 如果需要默认提供之外的语言包，在根目录下的`lang/vendor/rotate.captcha`，参考语言包添加语言
+ - 如果需要默认提供外的语言包，在根目录下的`lang/vendor/rotate.captcha`，参考语言包添加语言
 
 ## 服务对象 (Server)
 
