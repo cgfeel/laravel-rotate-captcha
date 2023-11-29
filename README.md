@@ -106,20 +106,14 @@ app('rotate.captcha.file')->clear()->cost();   // 清理后返回剩余总数
 
 ```
     'paths' => ['api/*', 'sanctum/csrf-cookie', 'rotate.captcha*'],
-
     'allowed_methods' => ['GET, POST, PATCH, PUT, OPTIONS'],
 
     // 下面是本地调试的URL，根据生产环境修改
     'allowed_origins' => ['http://localhost:8686', 'http://192.168.31.204:8686'],
-
     'allowed_origins_patterns' => [],
-
     'allowed_headers' => ['X-Captchatoken', 'X-Captchapolicie', 'X-Captchasid', 'X-Captchaticket'],
-
     'exposed_headers' => ['X-Captchatoken'],
-
     'max_age' => 0,
-
     'supports_credentials' => true,
 ```
 
