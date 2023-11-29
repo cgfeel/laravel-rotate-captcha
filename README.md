@@ -71,6 +71,35 @@ php artisan vendor:publish --provider="Levi\LaravelRotateCaptcha\CaptchaProvider
 - 参考文件`CaptchaController.php`和`CaptchaMiddleware.php`
 - 参考：[策略](#策略) 和 [设计思路](#设计思路)
 
+## 更新验证图片 (Updating)
+
+**手动更新：** 目录位置`\storage\app\{rotate.captcha}`，其中存储引擎和位置可在配置文件中修改。
+
+**自动更新：** 
+
+请通过在线的图床接口，通过调度`App\Console\Kernel`定期更新，这里提供一个存储的方法，以下为参考示例：
+
+```
+<?php
+
+$image = file_get_contents({custome_api_url});
+app('rotate.captcha.file', ['path' => 'origin'])->prepend('costome_name.jpg', $image);
+```
+
+> 提示：
+> 风景图安全系数 > 人物图 > 卡通图片，但不建议使用`bing`每日一图作为验证图片，因为验证的图片每天都是固定的
+
+## 清理过期图片 (Cleanup)
+
+请通过调度`App\Console\Kernel`定期清理，这里提供一个清理的方法，以下为参考示例：
+
+```
+<?php
+app('rotate.captcha.file')->clear();   // 清理前一天
+app('rotate.captcha.file')->clear(3600);   // 清理1小时前
+app('rotate.captcha.file')->clear()->cost();   // 清理后返回剩余总数
+```
+
 ## 跨域 (Cors)
 
 根据情况设置，以下仅供参考，修改`config/cors.php`：
@@ -116,6 +145,10 @@ php artisan vendor:publish --provider="Levi\LaravelRotateCaptcha\CaptchaProvider
  - 如果要和默认语言不一样，修改`config/rotate.captcha.php`中的`lang`
  - 如果需要默认提供之外的语言包，在根目录下的`lang/vendor/rotate.captcha`，参考语言包添加语言
 
+## 服务对象 (Server)
+
+具体请查看文档：[服务对象](https://github.com/cgfeel/laravel-rotate-captcha/blob/main/docs/server.md)
+
 ## 策略 (Policie)
 
 **由两部分组成：** `policie`默认策略，`rules`策略组规则
@@ -136,5 +169,14 @@ php artisan vendor:publish --provider="Levi\LaravelRotateCaptcha\CaptchaProvider
 
 ## 设计思路 (Design)
 
+高级用法：
+
+- 验证流程中`ua`实际并不局限使用`User-Agent`，可以通过自定义头部加密拼接增加安全系数
+- 除了头部，包括图片路径，都可以在本地通过二次加密`encryption`的方式增加安全系数
+
 ![New Board](https://github.com/cgfeel/laravel-rotate-captcha/assets/578141/27e82f87-0937-4e23-9e08-395fd9f0adda)
+
+## 更新日志 (Changelog)
+
+具体请查看文档：[更新日志](https://github.com/cgfeel/laravel-rotate-captcha/blob/main/docs/changelog.md)
 
