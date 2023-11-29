@@ -102,7 +102,7 @@ class Captcha
         $handle  = $this->_handleRaw();
 
         $cache_path      = $this->_getStoreFilePath($degrees, $size);
-        $cache_file_path = $this->_transform() . DIRECTORY_SEPARATOR. $cache_path;
+        $cache_file_path = $this->_transform(true) . DIRECTORY_SEPARATOR. $cache_path;
 
         $handle->setCachePathAndDegrees($cache_file_path, $degrees);
         return [
@@ -303,6 +303,14 @@ class Captcha
         return (new Store)->put($store_info, $limit, $expire);
     }
 
+    private function _createTransform(array $path): void
+    {
+        $target = implode(DIRECTORY_SEPARATOR, $path);
+        $disk   = self::disk();
+
+        if (!$disk->exists($target)) $disk->makeDirectory($target);
+    }
+
     /**
      * 路径规则：原图绝对路径?angle=角度&size=尺寸.格式
      *  - 规则一样就会使用已有的图片
@@ -365,11 +373,15 @@ class Captcha
     /**
      * Get transform dir
      */
-    private function _transform(): string
+    private function _transform(bool $create = false): string
     {
         $dir  = config('rotate.captcha.storePath', 'rotate.captcha');
         $path = ['app', $dir, 'transform'];
 
+        if ($create)
+        {
+            $this->_createTransform(array_slice($path, 1));
+        }
         return storage_path(implode(DIRECTORY_SEPARATOR, $path));
     }
 }
