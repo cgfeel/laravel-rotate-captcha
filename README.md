@@ -2,7 +2,7 @@
 
 [![Latest Stable Version](http://poser.pugx.org/levi/laravel-rotate-captcha/v)](https://packagist.org/packages/levi/laravel-rotate-captcha) [![Total Downloads](http://poser.pugx.org/levi/laravel-rotate-captcha/downloads)](https://packagist.org/packages/levi/laravel-rotate-captcha) [![Latest Unstable Version](http://poser.pugx.org/levi/laravel-rotate-captcha/v/unstable)](https://packagist.org/packages/levi/laravel-rotate-captcha) [![License](http://poser.pugx.org/levi/laravel-rotate-captcha/license)](https://packagist.org/packages/levi/laravel-rotate-captcha) [![PHP Version Require](http://poser.pugx.org/levi/laravel-rotate-captcha/require/php)](https://packagist.org/packages/levi/laravel-rotate-captcha)
 
-一个开箱即用的滑动验证码Laravel扩展，基于[[isszz/rotate-captcha](https://github.com/ahsankhatri/wordpress-auth-driver-laravel/tree/master)]做的二次开发；结合了腾讯防水墙，增加安全策略，查看：（[策略](#策略)）和（[设计思路](#设计思路)）
+一个开箱即用的滑动验证码Laravel扩展，基于[[isszz/rotate-captcha](https://github.com/ahsankhatri/wordpress-auth-driver-laravel/tree/master)]做的二次开发；结合了腾讯防水墙，增加安全策略，查看：（[策略](#策略-policie)）和（[设计思路](#设计思路-design)）
 
 前端代码整理中，待更新...
 
@@ -182,13 +182,13 @@ app('rotate.captcha.file')->clear()->cost();   // 清理后返回剩余总数
 
 具体请查看文档：[更新日志](https://github.com/cgfeel/laravel-rotate-captcha/blob/main/docs/changelog.md)
 
-## 物料
+## 物料 (Material)
 
 即时设计的向量稿件，包含组件设计规范：[查看](https://js.design/community?category=detail&type=resource&id=6561674f12aadf8dee1b33c2)
 
 ![911700882740_ pic](https://github.com/cgfeel/laravel-rotate-captcha/assets/578141/ea1532fa-17e1-4d08-b005-5089f705388c)
 
-## 相关产品
+## 相关产品 (Product)
 
 ### react前端组件
 
