@@ -40,7 +40,7 @@ php artisan vendor:publish --provider="Levi\LaravelRotateCaptcha\CaptchaProvider
 'rotate.captcha' => \Levi\LaravelRotateCaptcha\CaptchaMiddleware::class
 ```
 
-### 使用
+## 使用
 
 ### 默认开箱即用
 
