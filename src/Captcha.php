@@ -217,7 +217,7 @@ class Captcha
         }
 
         $filepath = $this->_transform() . DIRECTORY_SEPARATOR . $str;
-        if (is_null($filepath)) return [null, ''];
+        if (!is_file($filepath)) return [null, ''];
 
         $mime = 'image/'. pathinfo($filepath, PATHINFO_EXTENSION);
         return [$mime, file_get_contents($filepath)];
