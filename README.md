@@ -4,15 +4,13 @@
 
 一个开箱即用的滑动验证码Laravel扩展，基于[[isszz/rotate-captcha](https://github.com/isszz/rotate-captcha)]做的二次开发；结合了腾讯防水墙，增加安全策略，查看：[策略](#策略-policie) 和 [设计思路](#设计思路-design)；提供了React前端开源组件
 
+前端推荐使用：`cgfeel/react-rotate-captcha`，[[安装](https://github.com/cgfeel/react-rotate-captcha#-%E5%AE%89%E8%A3%85-installing)]、[[使用](https://github.com/cgfeel/react-rotate-captcha#-%E4%BD%BF%E7%94%A8-usage)]、[[接口](https://github.com/cgfeel/react-rotate-captcha#-%E6%8E%A5%E5%8F%A3-api)]，更多资源见底部相关产品
+
 <img width="351" alt="image" src="https://github.com/cgfeel/laravel-rotate-captcha/assets/578141/0f6d4073-2811-4c5b-807d-a95d56973848">
 
 视频演示：(在线演示整理中。。。)
 
 https://github.com/cgfeel/laravel-rotate-captcha/assets/578141/afa169d1-05c3-43d6-b7e7-cabaa8c5dbc5
-
-## 开源组件 (React)
-
-推荐使用：`cgfeel/react-rotate-captcha`，[[安装](https://github.com/cgfeel/react-rotate-captcha#-%E5%AE%89%E8%A3%85-installing)]、[[使用](https://github.com/cgfeel/react-rotate-captcha#-%E4%BD%BF%E7%94%A8-usage)]、[[接口](https://github.com/cgfeel/react-rotate-captcha#-%E6%8E%A5%E5%8F%A3-api)]，更多资源见底部相关产品
 
 ## 安装 (Installation)
 
