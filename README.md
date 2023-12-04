@@ -67,7 +67,7 @@ php artisan vendor:publish --provider="Levi\LaravelRotateCaptcha\CaptchaProvider
   - `size`：默认生成的验证图片尺寸是`350px`，可根据用户设备尺寸不同定制
   - `output`：默认按照配置文件输出验证图片格式（如`webp`），对于一些老设备的用户可单独配置
 
-客户端请求和接受的数据，见`react-rotate-captcha`（整理中...）
+客户端请求和接受的数据，见`react-rotate-captcha` [[查看](https://github.com/cgfeel/react-rotate-captcha#-%E6%8E%A5%E5%8F%A3-api)]
 
 ### 手动设置
 
