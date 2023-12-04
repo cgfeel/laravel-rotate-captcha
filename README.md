@@ -2,15 +2,17 @@
 
 [![Latest Stable Version](http://poser.pugx.org/levi/laravel-rotate-captcha/v)](https://packagist.org/packages/levi/laravel-rotate-captcha) [![Total Downloads](http://poser.pugx.org/levi/laravel-rotate-captcha/downloads)](https://packagist.org/packages/levi/laravel-rotate-captcha) [![Latest Unstable Version](http://poser.pugx.org/levi/laravel-rotate-captcha/v/unstable)](https://packagist.org/packages/levi/laravel-rotate-captcha) [![License](http://poser.pugx.org/levi/laravel-rotate-captcha/license)](https://packagist.org/packages/levi/laravel-rotate-captcha) [![PHP Version Require](http://poser.pugx.org/levi/laravel-rotate-captcha/require/php)](https://packagist.org/packages/levi/laravel-rotate-captcha)
 
-一个开箱即用的滑动验证码Laravel扩展，基于[[isszz/rotate-captcha](https://github.com/isszz/rotate-captcha)]做的二次开发；结合了腾讯防水墙，增加安全策略，查看：[策略](#策略-policie) 和 [设计思路](#设计思路-design)
-
-前端代码整理中，待更新...
+一个开箱即用的滑动验证码Laravel扩展，基于[[isszz/rotate-captcha](https://github.com/isszz/rotate-captcha)]做的二次开发；结合了腾讯防水墙，增加安全策略，查看：[策略](#策略-policie) 和 [设计思路](#设计思路-design)；提供了React前端开源组件
 
 <img width="351" alt="image" src="https://github.com/cgfeel/laravel-rotate-captcha/assets/578141/0f6d4073-2811-4c5b-807d-a95d56973848">
 
-视频演示：
+视频演示：(在线演示整理中。。。)
 
 https://github.com/cgfeel/laravel-rotate-captcha/assets/578141/afa169d1-05c3-43d6-b7e7-cabaa8c5dbc5
+
+## 开源组件 (React)
+
+推荐使用：`cgfeel/react-rotate-captcha`，[[安装](https://github.com/cgfeel/react-rotate-captcha#-%E5%AE%89%E8%A3%85-installing)]、[[使用](https://github.com/cgfeel/react-rotate-captcha#-%E4%BD%BF%E7%94%A8-usage)]、[[接口](https://github.com/cgfeel/react-rotate-captcha#-%E6%8E%A5%E5%8F%A3-api)]，更多资源见底部相关产品
 
 ## 安装 (Installation)
 
@@ -89,9 +91,7 @@ php artisan vendor:publish --provider="Levi\LaravelRotateCaptcha\CaptchaProvider
 
 请通过在线的图床接口，通过调度`App\Console\Kernel`定期更新，这里提供一个存储的方法，以下为参考示例：
 
-```
-<?php
-
+```php
 $image = file_get_contents({custome_api_url});
 app('rotate.captcha.file', ['path' => 'origin'])->prepend('costome_name.jpg', $image);
 ```
@@ -103,9 +103,7 @@ app('rotate.captcha.file', ['path' => 'origin'])->prepend('costome_name.jpg', $i
 
 请通过调度`App\Console\Kernel`定期清理，这里提供一个清理的方法，以下为参考示例：
 
-```
-<?php
-
+```php
 app('rotate.captcha.file')->clear();   // 清理前一天
 app('rotate.captcha.file')->clear(3600);   // 清理1小时前
 app('rotate.captcha.file')->clear()->cost();   // 清理后返回剩余总数
@@ -115,7 +113,7 @@ app('rotate.captcha.file')->clear()->cost();   // 清理后返回剩余总数
 
 根据情况设置，以下仅供参考，修改`config/cors.php`：
 
-```
+```php
     'paths' => ['api/*', 'sanctum/csrf-cookie', 'rotate.captcha*'],
     'allowed_methods' => ['GET, POST, PATCH, PUT, OPTIONS'],
 
@@ -158,7 +156,7 @@ app('rotate.captcha.file')->clear()->cost();   // 清理后返回剩余总数
 
 在根目录`phpunit.xml`中添加一组测试，如下：
 
-```
+```xml
         <testsuite name="levi/laravel-rotate-captcha">
             <directory>./vendor/levi/laravel-rotate-captcha</directory>
         </testsuite>
