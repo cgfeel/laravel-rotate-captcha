@@ -120,8 +120,8 @@ $schedule->call(fn () => app('rotate.captcha.file')->clear())->daily();
 // 清理1小时前
 $schedule->call(fn () => app('rotate.captcha.file')->clear(3600))->hourly();
 
-// 清理后返回剩余总数
-$schedule->call(fn () => app('rotate.captcha.file')->clear()->cost());
+// 清理后返回剩余总数，请在诸如`Controller`或`artisan`中调用
+app('rotate.captcha.file')->clear()->cost();
 ```
 
 ## 🕸️ 跨域 (Cors)
