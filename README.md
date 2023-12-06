@@ -21,7 +21,7 @@
 
 https://github.com/cgfeel/laravel-rotate-captcha/assets/578141/afa169d1-05c3-43d6-b7e7-cabaa8c5dbc5
 
-## 安装 (Installation)
+## 📦 安装 (Installation)
 
 安装此包你需要：
 
@@ -43,7 +43,7 @@ composer require levi/laravel-rotate-captcha
 }
 ```
 
-## 设置 (Configuration)
+## 🎛️ 设置 (Configuration)
 
 迁移配置文件、语言包、附件图
 
@@ -57,7 +57,7 @@ php artisan vendor:publish --provider="Levi\LaravelRotateCaptcha\CaptchaProvider
 'rotate.captcha' => \Levi\LaravelRotateCaptcha\CaptchaMiddleware::class
 ```
 
-## 使用 (Usage)
+## 🔨 使用 (Usage)
 
 ### 默认开箱即用
 
@@ -90,7 +90,7 @@ php artisan vendor:publish --provider="Levi\LaravelRotateCaptcha\CaptchaProvider
 - 参考文件`CaptchaController.php`和`CaptchaMiddleware.php`
 - 参考：[服务对象](#服务对象-server)、[策略](#策略-policie)、[设计思路](#设计思路-design)
 
-## 更新验证图片 (Updating)
+## 🏞️ 更新验证图片 (Updating)
 
 **手动更新：** 目录位置`\storage\app\{rotate.captcha}`，其中存储引擎和位置可在配置文件中修改。
 
@@ -106,7 +106,7 @@ app('rotate.captcha.file', ['path' => 'origin'])->prepend('costome_name.jpg', $i
 > 安全系数：
 > 风景图 > 人物图 > 卡通图片，但不建议使用`bing`每日一图作为验证图片，因为验证的图片每天都是固定的，拿来比对就能得出结果
 
-## 清理过期图片 (Cleanup)
+## 🗑️ 清理过期图片 (Cleanup)
 
 请通过调度`App\Console\Kernel`定期清理，这里提供一个清理的方法，以下为参考示例：
 
@@ -116,7 +116,7 @@ app('rotate.captcha.file')->clear(3600);   // 清理1小时前
 app('rotate.captcha.file')->clear()->cost();   // 清理后返回剩余总数
 ```
 
-## 跨域 (Cors)
+## 🕸️ 跨域 (Cors)
 
 根据情况设置，以下仅供参考，修改`config/cors.php`：
 
@@ -133,21 +133,21 @@ app('rotate.captcha.file')->clear()->cost();   // 清理后返回剩余总数
     'supports_credentials' => true,
 ```
 
-## 缓存 (Cache)
+## 🗃️ 缓存 (Cache)
 
 用于存储验证信息，默认按照`Laravel`缓存配置`config/cache.php`默认引擎`file`
 
 - 建议配置`cache.php`中的默认缓存
 - 如果要和默认缓存不一样，修改`config/rotate.captcha.php`中的`cache`，采用的缓存需要提前在`cache.php`配置好
 
-## 文件驱动 (Disk)
+## 🗄️ 文件驱动 (Disk)
 
 用于存储验证图片，默认按照`Laravel`文件配置`config/filesystem.php`默认引擎`local`
 
 - 建议配置`filesystem.php`中的驱动引擎
 - 如果要和默认驱动不一样，修改`config/rotate.captcha.php`中的`disk`，采用的驱动需要提前在`filesystem.php`配置好
 
-## 多语言 (Language)
+## 👩‍🎤 多语言 (Language)
 
 提供中文和英文，默认按照`Laravel`语言配置`config/app.php`配置为`en`
 
@@ -155,11 +155,11 @@ app('rotate.captcha.file')->clear()->cost();   // 清理后返回剩余总数
  - 如果要和默认语言不一样，修改`config/rotate.captcha.php`中的`lang`
  - 如果需要默认提供外的语言包，在根目录下的`lang/vendor/rotate.captcha`，参考语言包添加语言
 
-## 服务对象 (Server)
+## 🚀 服务对象 (Server)
 
 具体请查看文档：[服务对象](https://github.com/cgfeel/laravel-rotate-captcha/blob/main/docs/server.md)
 
-## 单元测试 (PHPUnit)
+## 🧪 单元测试 (PHPUnit)
 
 在根目录`phpunit.xml`中添加一组测试，如下：
 
@@ -171,7 +171,7 @@ app('rotate.captcha.file')->clear()->cost();   // 清理后返回剩余总数
 
 执行`./artisan test`
 
-## 策略 (Policie)
+## 🛃 策略 (Policie)
 
 **由两部分组成：** `policie`默认策略，`rules`策略组规则
 
@@ -194,7 +194,7 @@ app('rotate.captcha.file')->clear()->cost();   // 清理后返回剩余总数
 - 针对不同应用场景提供验证
 - 例如登录验证有效期30分钟，后台操作按次数进行身份验证
 
-## 设计思路 (Design)
+## 🛟 设计思路 (Design)
 
 高级用法：
 
@@ -203,17 +203,17 @@ app('rotate.captcha.file')->clear()->cost();   // 清理后返回剩余总数
 
 ![New Board](https://github.com/cgfeel/laravel-rotate-captcha/assets/578141/27e82f87-0937-4e23-9e08-395fd9f0adda)
 
-## 更新日志 (Changelog)
-
-具体请查看文档：[更新日志](https://github.com/cgfeel/laravel-rotate-captcha/blob/main/docs/changelog.md)
-
-## 物料 (Material)
+## ✂️ 物料 (Material)
 
 即时设计的向量稿件，包含组件设计规范：[查看](https://js.design/community?category=detail&type=resource&id=6561674f12aadf8dee1b33c2)
 
 ![911700882740_ pic](https://github.com/cgfeel/laravel-rotate-captcha/assets/578141/ea1532fa-17e1-4d08-b005-5089f705388c)
 
-## 相关产品 (Product)
+## 🗓️ 更新日志 (Changelog)
+
+具体请查看文档：[更新日志](https://github.com/cgfeel/laravel-rotate-captcha/blob/main/docs/changelog.md)
+
+## 🔗 相关产品 (Product)
 
 ### react前端组件
 
