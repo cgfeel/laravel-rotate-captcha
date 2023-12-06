@@ -2,7 +2,7 @@
 
 [![Latest Stable Version](http://poser.pugx.org/levi/laravel-rotate-captcha/v)](https://packagist.org/packages/levi/laravel-rotate-captcha) [![Total Downloads](http://poser.pugx.org/levi/laravel-rotate-captcha/downloads)](https://packagist.org/packages/levi/laravel-rotate-captcha) [![Latest Unstable Version](http://poser.pugx.org/levi/laravel-rotate-captcha/v/unstable)](https://packagist.org/packages/levi/laravel-rotate-captcha) [![License](http://poser.pugx.org/levi/laravel-rotate-captcha/license)](https://packagist.org/packages/levi/laravel-rotate-captcha) [![PHP Version Require](http://poser.pugx.org/levi/laravel-rotate-captcha/require/php)](https://packagist.org/packages/levi/laravel-rotate-captcha)
 
-一个开箱即用的滑动验证码Laravel扩展，基于[[isszz/rotate-captcha](https://github.com/isszz/rotate-captcha)]做的二次开发；结合了腾讯防水墙，增加安全策略，查看：[策略](#策略-policie) 和 [设计思路](#设计思路-design)；提供了React前端开源组件
+一个开箱即用的滑动验证码Laravel扩展，基于[[isszz/rotate-captcha](https://github.com/isszz/rotate-captcha)]做的二次开发；结合了腾讯防水墙，增加安全策略，查看：[策略](#-策略-policie) 和 [设计思路](#-设计思路-design)；提供了React前端开源组件
 
 前端推荐使用React组件库：`cgfeel/react-rotate-captcha`，[[安装](https://github.com/cgfeel/react-rotate-captcha#-%E5%AE%89%E8%A3%85-installing)]、[[使用](https://github.com/cgfeel/react-rotate-captcha#-%E4%BD%BF%E7%94%A8-usage)]、[[接口](https://github.com/cgfeel/react-rotate-captcha#-%E6%8E%A5%E5%8F%A3-api)]，更多资源见底部相关产品
 
@@ -88,7 +88,7 @@ php artisan vendor:publish --provider="Levi\LaravelRotateCaptcha\CaptchaProvider
 
 - 配置`config/rotate.captcha.php`中的`routers`项，关闭对应的路由
 - 参考文件`CaptchaController.php`和`CaptchaMiddleware.php`
-- 参考：[服务对象](#服务对象-server)、[策略](#策略-policie)、[设计思路](#设计思路-design)
+- 参考：[服务对象](https://github.com/cgfeel/laravel-rotate-captcha/blob/main/docs/server.md)、[策略](#-策略-policie)、[设计思路](#-设计思路-design)
 
 ## 🏞️ 更新验证图片 (Updating)
 
