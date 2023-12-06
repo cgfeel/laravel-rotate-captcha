@@ -96,24 +96,32 @@ php artisan vendor:publish --provider="Levi\LaravelRotateCaptcha\CaptchaProvider
 
 **自动更新：** 
 
-请通过在线的图床接口，通过调度`App\Console\Kernel`定期更新，这里提供一个存储的方法，以下为参考示例：
+请通过在线的图床接口，在Laravel调度`App\Console\Kernel`中`schedule`方法里添加定时抓取，这里提供一个存储的方法作为参考：
 
 ```php
-$image = file_get_contents({custome_api_url});
-app('rotate.captcha.file', ['path' => 'origin'])->prepend('costome_name.jpg', $image);
+// 每天0点抓取一张
+$schedule->call(function () {
+    $image = file_get_contents({custome_api_url});
+    app('rotate.captcha.file', ['path' => 'origin'])->prepend('costome_name.jpg', $image);
+})
+->daily();
 ```
 
-> 安全系数：
-> 风景图 > 人物图 > 卡通图片，但不建议使用`bing`每日一图作为验证图片，因为验证的图片每天都是固定的，拿来比对就能得出结果
+> 安全系数：风景图 > 人物图 > 卡通图片，但不建议使用`bing`每日一图作为验证图片，因为验证的图片每天都是固定的，拿来比对就能得出结果
 
 ## 🗑️ 清理过期图片 (Cleanup)
 
-请通过调度`App\Console\Kernel`定期清理，这里提供一个清理的方法，以下为参考示例：
+请在Laravel调度`App\Console\Kernel`中`schedule`方法里添加定期清理，以下为参考示例：
 
 ```php
-app('rotate.captcha.file')->clear();   // 清理前一天
-app('rotate.captcha.file')->clear(3600);   // 清理1小时前
-app('rotate.captcha.file')->clear()->cost();   // 清理后返回剩余总数
+// 清理前一天
+$schedule->call(fn () => app('rotate.captcha.file')->clear())->daily();
+
+// 清理1小时前
+$schedule->call(fn () => app('rotate.captcha.file')->clear(3600))->hourly();
+
+// 清理后返回剩余总数
+$schedule->call(fn () => app('rotate.captcha.file')->clear()->cost());
 ```
 
 ## 🕸️ 跨域 (Cors)
